@@ -1,0 +1,18 @@
+default:
+  image: alpine:3.13
+
+stages:
+  - sync_github
+
+sync:
+  stage: sync_github
+  before_script:
+    - apk add git openssh-client bash openssh jq curl
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - ssh-keyscan github.com > ~/.ssh/known_hosts
+    - ssh-add -D
+  script:
+    - /bin/bash sync.sh
+  only:
+    - main

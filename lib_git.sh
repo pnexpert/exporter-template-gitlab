@@ -20,7 +20,7 @@ function git_sync () {
   # todo: a check to verify if the ssh key is correct to the repo
 
   # 2. clone the remote repo
-  git clone git@github.com:pnetwork/${repo_name}.git ${TMP}
+  git clone git@github.com:pnexpert/${repo_name}.git ${TMP}
   if [ $? != 0 ]; then
     echo "[ERROR] failed to fetch remote repo: ${repo_name}"
     return 1

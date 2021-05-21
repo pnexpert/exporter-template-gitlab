@@ -8,7 +8,7 @@ This project assumes you've been familiar with:
 3. Basic git operations
 
 # Sync projects
-## Clone the projec to your gitlab service
+## Clone the projects to your gitlab service
 ## Retrieve proejct IDs from Pentium Network
 ## Prepare key pairs
 1. Create key pairs and submit public key to Pentium Network through this URL.

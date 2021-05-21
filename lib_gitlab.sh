@@ -1,9 +1,13 @@
 function harvest_projects () {
   curl --header "Authorization: Bearer ${gitlab_token}" ${CI_API_V4_URL}/projects > ${CI_PROJECT_DIR}/projects.json
+  
+  # todo: verify the token can get the projects data
 }
 
 function get_current_group_url () {
   cat ${CI_PROJECT_DIR}/projects.json | jq -r '.[] | select (.web_url=="'${CI_PROJECT_URL}'") | .namespace.web_url' |  sed 's#/groups/#/#g'
+
+  # todo: verify the current location is in a grouop
 }
 
 function create_a_project () {
@@ -11,12 +15,19 @@ function create_a_project () {
 
   _group_id=$(cat ${CI_PROJECT_DIR}/projects.json | jq -r '.[] | select (.web_url=="'${CI_PROJECT_URL}'") | .namespace.id')
   curl --header "Authorization: Bearer ${gitlab_token}" -X POST "${CI_API_V4_URL}/projects?name=${repo_name}&namespace_id=${_group_id}"
+
+  # todo: to prettify the output
+
+  # todo: to handle the request fail
+
 }
 
 function project_exists () {
   repo_name=$1
 
   _group_id=$(cat ${CI_PROJECT_DIR}/projects.json | jq -r '.[] | select (.web_url=="'${CI_PROJECT_URL}'") | .namespace.id')
+
+  # todo: to handle the error case
 
   RET=$(cat ${CI_PROJECT_DIR}/projects.json | jq -r '.[] | select (.name=="'${repo_name}'") | select (.namespace.id=='"${_group_id}"') | .id ' | wc -l)
   if [ "${RET}" == "0" ]; then

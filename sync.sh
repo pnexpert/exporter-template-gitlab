@@ -13,13 +13,19 @@ configs=$(cat config.csv)
 
 # fetch project info
 harvest_projects
+# todo: to handle the error case
+
 group_url=$(get_current_group_url)
+# todo: to handle the error case
+
 echo "[DEBUG] group_url: ${group_url}"
 
 for row in ${configs}
 do
   repo_name=$(echo "${row}" | awk -F"," '{ print $1 }')
   private_key=$(echo "${row}" | awk -F"," '{ print $2 }')
+
+  # 0. todo: filter the invalid config row
 
   # 1. check if all repositories exist and all repositories are created by the syncer
   repo_exists_or_create "${repo_name}"
@@ -38,3 +44,5 @@ do
   echo "[INFO] repo synced: ${repo_name}"
 
 done
+
+# todo: to have a error collection and show if any errors occurred

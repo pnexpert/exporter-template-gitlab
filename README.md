@@ -10,30 +10,56 @@ This project assumes you've been familiar with:
 # Sync projects
 
 ## Create a group in your gitlab service
-1. Create a group to contain the exporter and the projects to sync
+1. 建立一個存放 exporter 跟同步來的專案的 group
 ## Clone the projects to your gitlab service
-1. Create a new project and use the "Import project"
-2. Choose "Repo by URL", and fill "https://github.com/pnexpert/exporter-template-gitlab" into the "Git repository URL"
-3. Fill in the name in "Project Name" (We suggest to use "exporter-gitlab")
-4. Choose the created group in the list of Project Url column
-5. Click the "Create project" button
+1. 新增一個專案，點選 "Import project" 匯入
+2. 選擇 "Repo by URL", and 在 "Git repository URL" 欄位裡面填入 "https://github.com/pnexpert/exporter-template-gitlab" 
+3. "Project Name" 欄位裡面填入專案名稱 (我們建議使用 exporter-gitlab)
+4. 在 "Project Url" 裡面的選單裡面，選擇剛剛建立的 group
+5. 按下 "Create project" 按鈕開始匯入
 
 ## Retrieve proejct IDs from Pentium Network
 1. Contact the Pentium Network to obtain the list of project IDs
 
 ## Prepare key pairs
-1. Create key pairs ([example](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair)) and submit public key to Pentium Network through this URL.
-2. Store secrets in gitlab (Settings > CI / CD > Variables)
-3. Add a variable with setting like, Key: SSH_PRIVATE_KEY_1, Value: the content of private key, Type: File
+1. Create key pairs ([範例](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair)) and submit public key to Pentium Network through this URL.
+
+<pre>ssh-keygen -t ed25519 -C "sync [要 sync 的專案名稱]"</pre>
+
+2. Store secrets in gitlab (Exporter 專案的 Settings > CI / CD > Variables)
+3. 新增 variable，內容為:
+
+<pre>
+Key: SSH_PRIVATE_KEY_[流水號]
+Value: [private key 的檔案內容]
+Type: File
+</pre>
+
 4. Wait for Pentium Network to notify you all good!
 
 ## Prepare the API token
-1. Choose / Create an user for the exporter
-2. Open the User settings, Access Token
-3. Add a personal access token with Name, check the permission of api, read_repository, and write_repository
+1. 選擇或建立一個使用者，exporter 會以該使用者的全縣運作
+2. 打開使用者的 User settings > Access Token
+3. 新增一個 personal access token，內容會包含:
+
+<pre>
+Name: token 名稱 (可以寫 exporter 用)
+勾選權限:
+api, read_repository, and write_repository
+</pre>
+
 4. Store secrets in gitlab (Settings > CI / CD > Variables)
-5. Add gitlab_user, Key: gitlab_user, Value: id of the user, Type: Variable
-6. Add gitlab_token, Key: gitlab_token, Value: <the created token>, type: Variable
+5. 新增 variable，內容為:
+
+<pre>
+Key: gitlab_user
+Value: id of the user
+Type: Variable
+</pre>
+
+6. 新增 gitlab_token 的 variable，內容為:
+
+Add gitlab_token, Key: gitlab_token, Value: <the created token>, type: Variable
 
 ## Config your exporter pipeline 
 1. Setup a service key with sufficient permissions

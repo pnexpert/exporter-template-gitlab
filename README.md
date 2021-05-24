@@ -1,7 +1,7 @@
 # Polling / sync projects to your gitlab server 
 這個 GitLab CI 的 tempalte 可讓客戶用來同步奔騰專家服務的工作產出到客戶自己的 gitlab 服務上
 
-# Prerequsite 
+# Prerequisite 
 這個專案假設您已經熟悉:
 1. 設定 Gitlab CICD pipeline
 2. 在 Gitlab 內管理 secrets
@@ -26,7 +26,7 @@
 <pre>ssh-keygen -t ed25519 -C "sync [要 sync 的專案名稱]"</pre>
 
 2. 把 private key 儲存在 gitlab 內 (Exporter 專案的 Settings > CI / CD > Variables)
-3. 新增 variable，內容為:
+3. 新增 variable，格式為:
 
 <pre>
 Key: SSH_PRIVATE_KEY_[流水號]

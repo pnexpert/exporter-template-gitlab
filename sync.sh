@@ -13,10 +13,16 @@ configs=$(cat config.csv)
 
 # fetch project info
 harvest_projects
-# todo: to handle the error case
+if [ $? != 0 ]; then
+  echo "[ERROR] unable to fetch the metadata of projects, please check if the user and token has enough permission"
+  exit 1
+fi
 
 group_url=$(get_current_group_url)
-# todo: to handle the error case
+if [ "${group_url}" == "" ]; then
+  echo "[ERROR] the group is belonging to a group or the group info is unavailable, please check if the exporter is in a group"
+  exit 1
+fi
 
 echo "[DEBUG] group_url: ${group_url}"
 

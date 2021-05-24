@@ -30,7 +30,7 @@ HAS_ERROR=NO
 
 for row in ${configs}
 do
-  # 0. todo: filter the invalid config row
+  # 0. filter the invalid config row
   if [ "${row}" == "" ]; then
     echo "[INFO] skip: ${row}"
     continue
@@ -65,7 +65,7 @@ do
 
 done
 
-# todo: to have a error collection and show if any errors occurred
+# show the errors if any errors occurred
 if [ "${HAS_ERROR}" == "YES" ]; then
   echo "[ERROR] One of the sync jobs weng wrong, please search 'ERROR' for the detail"
   exit 1

@@ -66,11 +66,19 @@ Type: Variable
 Add gitlab_token, Key: gitlab_token, Value: <the created token>, type: Variable
 
 ## 設定 Gitlab pipeline
-1. 建立 config 檔案 (可以複製 [config.csv-dist](config.csv-dist), 把檔名奤成 config.csv，然後填入設定，格式:
+1. 建立 config 檔案 (可以複製 [config.csv-dist](config.csv-dist), 把檔名奤成 config.csv，然後填入設定，格式為:
+
+[repo name],[private key 使用的環境變數名稱]
+
+舉例來說，
+奔騰專家服務提供了兩個 repo IDs，分別為 demo_repo 以及 sample_repo
+而您在前面的 Gitlab Variable 分別設定了 SSH_PRIVATE_KEY_1 和 SSH_PRIVATE_KEY_2
+
+config.csv 就會如下:
 
 <pre>
-project1,ssh_private_key_1
-project2,ssh_private_key_2
+demo_repo,SSH_PRIVATE_KEY_1
+sample_repo,SSH_PRIVATE_KEY_2
 </pre>
 
 2. 到 pipeline 去測試剛剛的設定

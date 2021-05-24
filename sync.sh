@@ -26,6 +26,8 @@ fi
 
 echo "[DEBUG] group_url: ${group_url}"
 
+HAS_ERROR=NO
+
 for row in ${configs}
 do
   # 0. todo: filter the invalid config row
@@ -47,14 +49,16 @@ do
   repo_exists_or_create "${repo_name}"
   if [ $? != 0 ]; then
     echo "[ERROR] failed to check repo ${repo_name}" 
+    HAS_ERROR=YES
     continue
   fi
-  echo "[INFO] repo created: ${repo_name}"
+  echo "[INFO] repo passed the check: ${repo_name}"
 
   # 2. sync the repositories
   git_sync "${repo_name}" "${private_key}" "${group_url:8}"
   if [ $? != 0 ]; then
     echo "[ERROR] failed to sync ${repo_name}" 
+    HAS_ERROR=YES
     continue
   fi
   echo "[INFO] repo synced: ${repo_name}"
@@ -62,3 +66,7 @@ do
 done
 
 # todo: to have a error collection and show if any errors occurred
+if [ "${HAS_ERROR}" == "YES" ]; then
+  echo "[ERROR] One of the sync jobs weng wrong, please search 'ERROR' for the detail"
+  exit 1
+fi

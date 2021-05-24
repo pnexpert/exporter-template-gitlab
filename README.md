@@ -26,7 +26,7 @@ This Gitlab CICD pipeline template for you to config which projects to be synced
 
 <pre>ssh-keygen -t ed25519 -C "sync [要 sync 的專案名稱]"</pre>
 
-2. 把 private key 除存在 gitlab 內 (Exporter 專案的 Settings > CI / CD > Variables)
+2. 把 private key 儲存在 gitlab 內 (Exporter 專案的 Settings > CI / CD > Variables)
 3. 新增 variable，內容為:
 
 <pre>
@@ -38,7 +38,7 @@ Type: File
 4. Wait for Pentium Network to notify you all good!
 
 ## 準備 gitlab API token
-1. 選擇或建立一個使用者，exporter 會以該使用者的全縣運作
+1. 選擇或建立一個使用者，exporter 會以該使用者的權限運作
 2. 打開使用者的 User settings > Access Token
 3. 新增一個 personal access token，內容會包含:
 
@@ -70,6 +70,6 @@ project2,ssh_private_key_2
 </pre>
 
 2. 到 pipeline 去測試剛剛的設定
-3. 設定 pipeline schedule 的排程執行頻率，即可自動拉取
+3. 設定 pipeline schedule 的排程執行頻率，即可自動排程拉取
 
 Happying syncing!

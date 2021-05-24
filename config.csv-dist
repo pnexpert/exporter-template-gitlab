@@ -1,3 +1,2 @@
-project_1,SSH_PRIVATE_KEY_1
-project_2,SSH_PRIVATE_KEY_1
-project_3,SSH_PRIVATE_KEY_2
+demo_repo,SSH_PRIVATE_KEY_1
+sample_repo,SSH_PRIVATE_KEY_2

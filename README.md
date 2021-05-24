@@ -1,5 +1,5 @@
 # Polling / sync projects to your gitlab server 
-This Gitlab CICD pipeline template for you to config which projects to be synced to your own gitlab server using CICD pipeline
+這個 GitLab CI 的 tempalte 可讓客戶用來同步奔騰專家服務的工作產出到客戶自己的 gitlab 服務上
 
 # Prerequsite 
 這個專案假設您已經熟悉:

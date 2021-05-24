@@ -19,7 +19,7 @@ This Gitlab CICD pipeline template for you to config which projects to be synced
 5. 按下 "Create project" 按鈕開始匯入
 
 ## 從 Pentium Network 取得專案名稱
-1. 聯絡 Pentium Network 去得專案 ID
+1. 聯絡 Pentium Network 得專案 ID
 
 ## 準備 SSH key pairs
 1. 建立 ssh key pairs，接著把 public key 送給 Pentium Network，[範例](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair):

@@ -16,3 +16,4 @@ sync:
     - /bin/bash sync.sh
   only:
     - main
+  timeout: 5m

@@ -19,7 +19,7 @@
 5. 按下 "Create project" 按鈕開始匯入
 
 ## 從 Pentium Network 取得專案名稱
-1. 聯絡 Pentium Network 得專案 ID
+1. 與您的奔騰專家服務 PM 窗口聯繫取得工作產出的 repo ID
 
 ## 準備 SSH key pairs
 1. 建立 ssh key pairs，接著把 public key 送給 Pentium Network，[範例](https://docs.gitlab.com/ee/ssh/#generate-an-ssh-key-pair):
@@ -35,7 +35,12 @@ Value: [private key 的檔案內容]
 Type: File
 </pre>
 
-4. Wait for Pentium Network to notify you all good!
+範例:
+
+![GitlabSSH-Key](images/gitlab-ssh-key.png)
+
+
+4. 等待奔騰專家服務通知您已設定完成
 
 ## 準備 gitlab API token
 1. 選擇或建立一個使用者，exporter 會以該使用者的權限運作

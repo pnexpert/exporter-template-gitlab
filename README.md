@@ -2,13 +2,10 @@
 This Gitlab CICD pipeline template for you to config which projects to be synced to your own gitlab server using CICD pipeline
 
 # Prerequsite 
-This project assumes you've been familiar with:
-1. 建立用來存放同步專案的 group
-2. 複製同步專案 exporter 到 gitlab 內
-3. 從 Pentium Network 取得專案名稱
-4. 準備 SSH key pairs
-5. 準備 gitlab API token
-6. 設定 Gitlab pipeline
+這個專案假設您已經熟悉:
+1. 設定 Gitlab CICD pipeline
+2. 在 Gitlab 內管理 secrets
+3. 基本的 git 操作
 
 # Sync projects
 

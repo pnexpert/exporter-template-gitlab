@@ -68,7 +68,7 @@ Type: Variable
 Add gitlab_token, Key: gitlab_token, Value: <the created token>, type: Variable
 
 ## 設定 Gitlab pipeline
-1. 建立 config 檔案 (可以複製 [config.csv-dist](config.csv-dist), 把檔名奤成 config.csv，然後填入設定，格式為:
+1. 建立 config 檔案 (可以複製 [config.csv-dist](config.csv-dist), 把檔名改成 config.csv，然後填入設定，格式為:
 
 [repo name],[private key 使用的環境變數名稱]
 

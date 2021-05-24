@@ -28,10 +28,20 @@ echo "[DEBUG] group_url: ${group_url}"
 
 for row in ${configs}
 do
+  # 0. todo: filter the invalid config row
+  if [ "${row}" == "" ]; then
+    echo "[INFO] skip: ${row}"
+    continue
+  fi
+
+  RET=$(echo "${row}" | grep "," | wc -l)
+  if [ "${RET}" == 0 ]; then
+    echo "[INFO] skip: ${row}"
+    continue
+  fi
+
   repo_name=$(echo "${row}" | awk -F"," '{ print $1 }')
   private_key=$(echo "${row}" | awk -F"," '{ print $2 }')
-
-  # 0. todo: filter the invalid config row
 
   # 1. check if all repositories exist and all repositories are created by the syncer
   repo_exists_or_create "${repo_name}"

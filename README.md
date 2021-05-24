@@ -7,6 +7,8 @@
 2. 在 Gitlab 內管理 secrets
 3. 基本的 git 操作
 
+這個專案需要在 Linux based runner 上面運作
+
 # Sync projects
 
 ## 複製同步專案 exporter 到 gitlab 內

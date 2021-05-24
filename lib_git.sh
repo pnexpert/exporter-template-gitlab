@@ -42,7 +42,7 @@ function git_sync () {
   TMP=$(mktemp -d)
 
   # clone the remote repo
-  git clone git@github.com:pnetwork/${repo_name}.git ${TMP}
+  git clone git@github.com:pnexpert/${repo_name}.git ${TMP}
   if [ $? != 0 ]; then
     echo "[ERROR] failed to fetch remote repo: ${repo_name}"
     return 1

@@ -9,14 +9,13 @@
 
 # Sync projects
 
-## 建立用來存放同步專案的 group
-1. 建立一個存放 exporter 跟同步來的專案的 group
 ## 複製同步專案 exporter 到 gitlab 內
-1. 新增一個專案，點選 "Import project" 匯入
-2. 選擇 "Repo by URL", and 在 "Git repository URL" 欄位裡面填入 "https://github.com/pnexpert/exporter-template-gitlab" 
-3. "Project Name" 欄位裡面填入專案名稱 (我們建議使用 exporter-gitlab)
-4. 在 "Project Url" 裡面的選單裡面，選擇剛剛建立的 group
-5. 按下 "Create project" 按鈕開始匯入
+1. 建立一個存放 exporter 跟同步來的專案的 group
+2. 新增一個專案，點選 "Import project" 匯入
+3. 選擇 "Repo by URL", and 在 "Git repository URL" 欄位裡面填入 "https://github.com/pnexpert/exporter-template-gitlab" 
+4. "Project Name" 欄位裡面填入專案名稱 (我們建議使用 exporter-gitlab)
+5. 在 "Project Url" 裡面的選單裡面，選擇剛剛建立的 group
+6. 按下 "Create project" 按鈕開始匯入
 
 ## 從 Pentium Network 取得專案名稱
 1. 與您的奔騰專家服務 PM 窗口聯繫取得工作產出的 repo ID

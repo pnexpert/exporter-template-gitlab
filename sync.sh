@@ -36,7 +36,7 @@ do
   # 1. check if all repositories exist and all repositories are created by the syncer
   repo_exists_or_create "${repo_name}"
   if [ $? != 0 ]; then
-    echo "failed to check repo ${repo_name}" 
+    echo "[ERROR] failed to check repo ${repo_name}" 
     continue
   fi
   echo "[INFO] repo created: ${repo_name}"
@@ -44,7 +44,7 @@ do
   # 2. sync the repositories
   git_sync "${repo_name}" "${private_key}" "${group_url:8}"
   if [ $? != 0 ]; then
-    echo "failed to sync ${repo_name}" 
+    echo "[ERROR] failed to sync ${repo_name}" 
     continue
   fi
   echo "[INFO] repo synced: ${repo_name}"

@@ -26,6 +26,18 @@ function git_sync () {
     return 1
   fi
 
+  remote=$(git ls-remote git@github.com:pnetwork/${repo_name}.git HEAD | awk '{ print $1 }')
+  local=$(git ls-remote https://${gitlab_user}:${gitlab_token}@${dest_prefix}/${repo_name}.git HEAD | awk '{ print $1 }')
+  echo "[DEBUG] remote: ${remote}"
+  echo "[DEBUG] local: ${local}"
+
+  if [ "${remote}" == "${local}" ]; then
+    echo "[DEBUG] skip the sync because ${remote} = ${local}"
+    # remove all ssh keys
+    ssh-add -D
+    return 0
+  fi
+
   # prepare the tmp working folder
   TMP=$(mktemp -d)
 

@@ -1,9 +1,26 @@
 function harvest_projects () {
-  curl --header "Authorization: Bearer ${gitlab_token}" ${CI_API_V4_URL}/projects > ${CI_PROJECT_DIR}/projects.json
+  # get the groups
+  curl --header "Authorization: Bearer ${gitlab_token}" "${CI_API_V4_URL}/search?scope=projects&search=${CI_PROJECT_NAME}" > ${CI_PROJECT_DIR}/group.json
+  if [ $? != 0 ]; then
+    echo "[DEBUG] failed to search the current project"
+    return 1
+  fi
+
+  # get the group id exactly by the URL
+  _group_id=$(cat ${CI_PROJECT_DIR}/group.json | jq '.[] | select(.web_url=="'${CI_PROJECT_URL}'") | .namespace.id')
+  if [ "${_group_id}" == "" ]; then
+    echo "[DEBUG] group id is unavailable by the project url ${CI_PROJECT_URL}"
+    return 1
+  fi
+
+  # get the projects by the group id
+  curl --header "Authorization: Bearer ${gitlab_token}" "${CI_API_V4_URL}/groups/${_group_id}/projects" > ${CI_PROJECT_DIR}/projects.json
   if [ $? != 0 ]; then
     echo "[DEBUG] failed to fetch metadata of projects"
     return 1
   fi
+  echo "[DEBUG] projects in the same group:"
+  cat ${CI_PROJECT_DIR}/projects.json | jq '.[] | .name'
   
   # to verify the output is json: [{"name": "something"}]
   cat ${CI_PROJECT_DIR}/projects.json | jq '.[] | .name' > /dev/null

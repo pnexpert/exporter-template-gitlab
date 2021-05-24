@@ -71,8 +71,8 @@ Add gitlab_token, Key: gitlab_token, Value: <the created token>, type: Variable
 [repo name],[private key 使用的環境變數名稱]
 
 舉例來說，
-奔騰專家服務提供了兩個 repo IDs，分別為 demo_repo 以及 sample_repo
-而您在前面的 Gitlab Variable 分別設定了 SSH_PRIVATE_KEY_1 和 SSH_PRIVATE_KEY_2
+奔騰專家服務提供了兩個 repo IDs，分別為 __demo_repo__ 以及 __sample_repo__<br>
+您在前面的 Gitlab Variable 分別設定了 __SSH_PRIVATE_KEY_1__ 和 __SSH_PRIVATE_KEY_2__
 
 config.csv 就會如下:
 

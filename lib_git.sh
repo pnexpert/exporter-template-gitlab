@@ -54,7 +54,7 @@ function git_sync () {
   git remote add target https://${gitlab_user}:${gitlab_token}@${dest_prefix}/${repo_name}.git
 
   # push to the local repo
-  git push target main:master
+  git push target
   if [ $? != 0 ]; then
     echo "[ERROR] failed to push to local repo: ${repo_name}"
     return 1
